@@ -1,0 +1,129 @@
+.root {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--engen-space-1);
+  min-width: var(--engen-input-width-md);
+  font-family: var(--engen-font-family);
+}
+
+.sm {
+  min-width: var(--engen-input-width-sm);
+}
+.md {
+  min-width: var(--engen-input-width-md);
+}
+.lg {
+  min-width: var(--engen-input-width-lg);
+}
+.fullWidth {
+  display: flex;
+  min-width: 0;
+}
+
+.label {
+  color: var(--engen-color-text);
+  font-size: var(--engen-font-size-sm);
+  font-weight: var(--engen-font-weight-medium);
+}
+
+.required {
+  color: var(--engen-input-error-fg);
+}
+
+.field {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: var(--engen-space-2);
+  min-height: var(--engen-input-height);
+  padding-inline: var(--engen-input-padding-inline);
+  border: var(--engen-input-border-width) solid var(--engen-input-border);
+  border-radius: var(--engen-input-radius);
+  background-color: var(--engen-input-bg);
+  transition:
+    border-color var(--engen-transition-fast),
+    box-shadow var(--engen-transition-fast);
+}
+
+.field:hover {
+  border-color: var(--engen-input-border-hover);
+}
+
+.field:focus-within {
+  border-color: var(--engen-input-border-focus);
+  box-shadow: 0 0 0 3px var(--engen-color-focus-ring);
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  padding-block: var(--engen-input-padding-block);
+  border: 0;
+  background: none;
+  color: var(--engen-input-fg);
+  font: inherit;
+  font-size: var(--engen-input-font-size);
+}
+
+.input:focus {
+  outline: none;
+  color: var(--engen-input-focus-fg);
+  font-weight: var(--engen-input-focus-weight);
+}
+
+.input::placeholder {
+  color: var(--engen-input-placeholder-fg);
+  font-weight: 400;
+  font-style: italic;
+}
+
+.adornment {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  color: var(--engen-input-adornment-fg);
+  font-size: 1rem;
+}
+
+/* Disabled ----------------------------------------------------------------- */
+.disabled .field {
+  border-color: var(--engen-input-border);
+  background-color: var(--engen-input-disabled-bg);
+  cursor: not-allowed;
+}
+
+.input:disabled {
+  color: var(--engen-input-disabled-fg);
+  cursor: not-allowed;
+  -webkit-text-fill-color: var(--engen-input-disabled-fg);
+  opacity: 1;
+}
+
+/* Error ------------------------------------------------------------------- */
+.hasError .field {
+  border-color: var(--engen-input-error-border);
+}
+
+.hasError .field:focus-within {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--engen-input-error-border) 35%, transparent);
+}
+
+.hasError .adornment {
+  color: var(--engen-input-error-fg);
+}
+
+.message {
+  margin: 0;
+  color: var(--engen-color-text-muted);
+  font-size: var(--engen-font-size-sm);
+}
+
+.hasError .message {
+  color: var(--engen-input-error-fg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .field {
+    transition: none;
+  }
+}

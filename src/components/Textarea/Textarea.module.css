@@ -1,0 +1,98 @@
+.root {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--engen-space-1);
+  min-width: var(--engen-input-width-md);
+  font-family: var(--engen-font-family);
+}
+
+.sm {
+  min-width: var(--engen-input-width-sm);
+}
+.md {
+  min-width: var(--engen-input-width-md);
+}
+.lg {
+  min-width: var(--engen-input-width-lg);
+}
+.fullWidth {
+  display: flex;
+  min-width: 0;
+}
+
+.label {
+  color: var(--engen-color-text);
+  font-size: var(--engen-font-size-sm);
+  font-weight: var(--engen-font-weight-medium);
+}
+
+.required {
+  color: var(--engen-input-error-fg);
+}
+
+.textarea {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: calc(var(--engen-input-height) * 1.6);
+  padding: var(--engen-input-padding-block) var(--engen-input-padding-inline);
+  border: var(--engen-input-border-width) solid var(--engen-input-border);
+  border-radius: var(--engen-input-radius);
+  background-color: var(--engen-input-bg);
+  color: var(--engen-input-fg);
+  font: inherit;
+  font-size: var(--engen-input-font-size);
+  line-height: var(--engen-line-height);
+  transition:
+    border-color var(--engen-transition-fast),
+    box-shadow var(--engen-transition-fast);
+}
+
+.textarea:hover:not(:disabled) {
+  border-color: var(--engen-input-border-hover);
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: var(--engen-input-border-focus);
+  color: var(--engen-input-focus-fg);
+  font-weight: var(--engen-input-focus-weight);
+  box-shadow: 0 0 0 3px var(--engen-color-focus-ring);
+}
+
+.textarea::placeholder {
+  color: var(--engen-input-placeholder-fg);
+  font-weight: 400;
+  font-style: italic;
+}
+
+.textarea:disabled {
+  background-color: var(--engen-input-disabled-bg);
+  color: var(--engen-input-disabled-fg);
+  cursor: not-allowed;
+  -webkit-text-fill-color: var(--engen-input-disabled-fg);
+  opacity: 1;
+}
+
+.hasError .textarea {
+  border-color: var(--engen-input-error-border);
+}
+
+.hasError .textarea:focus {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--engen-input-error-border) 35%, transparent);
+}
+
+.message {
+  margin: 0;
+  color: var(--engen-color-text-muted);
+  font-size: var(--engen-font-size-sm);
+}
+
+.hasError .message {
+  color: var(--engen-input-error-fg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .textarea {
+    transition: none;
+  }
+}

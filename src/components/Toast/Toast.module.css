@@ -1,0 +1,167 @@
+.toast {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--engen-toast-gap);
+  width: var(--engen-toast-width);
+  max-width: calc(100vw - var(--engen-space-6));
+  padding: var(--engen-space-4);
+  overflow: hidden;
+  border-radius: var(--engen-toast-radius);
+  background-color: var(--engen-toast-bg);
+  color: var(--engen-toast-fg);
+  box-shadow: var(--engen-toast-shadow);
+  font-family: var(--engen-font-family);
+  animation: engen-toast-in var(--engen-transition-base);
+}
+
+@keyframes engen-toast-in {
+  from {
+    transform: translateY(-8px);
+    opacity: 0;
+  }
+}
+
+.icon {
+  flex: none;
+  font-size: var(--engen-toast-icon-size);
+  line-height: 1;
+}
+
+.success .icon {
+  color: var(--engen-toast-success);
+}
+.error .icon {
+  color: var(--engen-toast-error);
+}
+.progress .icon {
+  color: var(--engen-toast-progress);
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.title {
+  margin: 0;
+  font-size: var(--engen-font-size-md);
+  font-weight: var(--engen-font-weight-semibold);
+}
+
+.description {
+  margin: 0;
+  color: var(--engen-color-text-muted);
+  font-size: var(--engen-font-size-sm);
+}
+
+.close {
+  display: inline-flex;
+  flex: none;
+  margin: -2px -2px 0 0;
+  padding: 2px;
+  border: 0;
+  border-radius: var(--engen-radius-sm);
+  background: none;
+  color: var(--engen-color-text-muted);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: var(--engen-toast-fg);
+}
+
+.close:focus-visible {
+  outline: 2px solid var(--engen-color-focus-ring);
+}
+
+.bar {
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline-start: 0;
+  width: 100%;
+  height: 3px;
+  transform-origin: left;
+  animation: engen-toast-bar linear forwards;
+}
+
+.success .bar {
+  background-color: var(--engen-toast-success);
+}
+.error .bar {
+  background-color: var(--engen-toast-error);
+}
+.progress .bar {
+  background-color: var(--engen-toast-progress);
+}
+
+@keyframes engen-toast-bar {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}
+
+/* Viewport (stack) ------------------------------------------------------- */
+.viewport {
+  position: fixed;
+  z-index: var(--engen-z-toast);
+  display: flex;
+  flex-direction: column;
+  gap: var(--engen-space-3);
+  padding: var(--engen-space-4);
+  pointer-events: none;
+}
+
+.viewport > * {
+  pointer-events: auto;
+}
+
+.top-right {
+  inset-block-start: 0;
+  inset-inline-end: 0;
+  align-items: flex-end;
+}
+.top-left {
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  align-items: flex-start;
+}
+.top-center {
+  inset-block-start: 0;
+  inset-inline: 0;
+  align-items: center;
+}
+.bottom-right {
+  inset-block-end: 0;
+  inset-inline-end: 0;
+  flex-direction: column-reverse;
+  align-items: flex-end;
+}
+.bottom-left {
+  inset-block-end: 0;
+  inset-inline-start: 0;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+}
+.bottom-center {
+  inset-block-end: 0;
+  inset-inline: 0;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toast {
+    animation: none;
+  }
+  .bar {
+    animation: none;
+  }
+}

@@ -1,0 +1,23 @@
+.dateInput::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+.dateInput::-webkit-inner-spin-button,
+.dateInput::-webkit-clear-button {
+  display: none;
+}
+
+.calendarButton {
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font-size: 1.125rem;
+  cursor: pointer;
+}
+
+.calendarButton:disabled {
+  cursor: not-allowed;
+}

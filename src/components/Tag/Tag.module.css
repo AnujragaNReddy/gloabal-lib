@@ -1,0 +1,70 @@
+.tag {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--engen-space-1);
+  max-width: 100%;
+  height: var(--engen-tag-height);
+  padding-inline: var(--engen-tag-padding-inline);
+  border-radius: var(--engen-tag-radius);
+  font-family: var(--engen-font-family);
+  font-size: var(--engen-tag-font-size);
+  font-weight: var(--engen-font-weight-medium);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.subtle {
+  background-color: var(--engen-tag-subtle-bg);
+  color: var(--engen-tag-subtle-fg);
+}
+
+.solid {
+  background-color: var(--engen-tag-solid-bg);
+  color: var(--engen-tag-solid-fg);
+}
+
+.sm {
+  height: 1.375rem;
+  padding-inline: var(--engen-space-2);
+  font-size: 0.6875rem;
+}
+
+.icon {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  font-size: 0.875em;
+}
+
+.label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.remove {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 1.1em;
+  height: 1.1em;
+  margin-inline-end: -0.25rem;
+  padding: 0;
+  border: 0;
+  border-radius: var(--engen-radius-full);
+  background: none;
+  color: inherit;
+  font-size: 1em;
+  cursor: pointer;
+  opacity: 0.75;
+}
+
+.remove:hover {
+  opacity: 1;
+}
+
+.remove:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 1px;
+}

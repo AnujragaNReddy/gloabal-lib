@@ -1,0 +1,159 @@
+.button {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--engen-space-2);
+  height: var(--engen-button-height);
+  padding-inline: var(--engen-button-padding-inline);
+  border: var(--engen-button-border-width) solid transparent;
+  border-radius: var(--engen-button-radius);
+  font-family: var(--engen-font-family);
+  font-size: var(--engen-button-font-size);
+  font-weight: var(--engen-button-font-weight);
+  letter-spacing: var(--engen-button-letter-spacing);
+  line-height: 1;
+  text-transform: var(--engen-button-text-transform);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    background-color var(--engen-transition-fast),
+    border-color var(--engen-transition-fast),
+    color var(--engen-transition-fast),
+    box-shadow var(--engen-transition-fast);
+}
+
+.button:focus-visible {
+  outline: 2px solid transparent;
+  box-shadow: 0 0 0 3px var(--engen-color-focus-ring);
+}
+
+.button:disabled {
+  cursor: not-allowed;
+}
+
+/* Width presets — min-width so a long label still fits ------------------- */
+.sm {
+  min-width: var(--engen-button-min-width-sm);
+}
+
+.md {
+  min-width: var(--engen-button-min-width-md);
+}
+
+.lg {
+  min-width: var(--engen-button-min-width-lg);
+}
+
+.fullWidth {
+  width: 100%;
+  min-width: 0;
+}
+
+/* Solid ---------------------------------------------------------------------- */
+.solid {
+  background-color: var(--engen-button-solid-bg);
+  color: var(--engen-button-solid-fg);
+}
+
+.solid:hover:not(:disabled) {
+  background-color: var(--engen-button-solid-bg-hover);
+}
+
+.solid:active:not(:disabled) {
+  background-color: var(--engen-button-solid-bg-active);
+}
+
+.solid:disabled {
+  background-color: var(--engen-button-disabled-bg);
+  color: var(--engen-button-disabled-fg);
+}
+
+/* Outlined ----------------------------------------------------------------- */
+.outlined {
+  border-color: var(--engen-button-outlined-border);
+  background-color: var(--engen-button-outlined-bg);
+  color: var(--engen-button-outlined-fg);
+}
+
+.outlined:hover:not(:disabled) {
+  border-color: var(--engen-button-outlined-bg-hover);
+  background-color: var(--engen-button-outlined-bg-hover);
+  color: var(--engen-button-outlined-fg-hover);
+}
+
+.outlined:active:not(:disabled) {
+  border-color: var(--engen-button-outlined-bg-active);
+  background-color: var(--engen-button-outlined-bg-active);
+  color: var(--engen-button-outlined-fg-hover);
+}
+
+.outlined:disabled {
+  border-color: var(--engen-button-disabled-border);
+  background-color: transparent;
+  color: var(--engen-button-disabled-bg);
+}
+
+/* Content ------------------------------------------------------------------- */
+.label {
+  display: inline-flex;
+  align-items: center;
+}
+
+.icon {
+  display: inline-flex;
+  flex: none;
+  width: 1em;
+  height: 1em;
+}
+
+/* Loading ---------------------------------------------------------------------- */
+.loading {
+  position: relative;
+  pointer-events: none;
+}
+
+.loading .label,
+.loading .icon {
+  visibility: hidden;
+}
+
+/* `loadingText` — keep the label visible and let the spinner sit inline. */
+.loadingWithText {
+  position: static;
+}
+
+.loadingWithText .label {
+  visibility: visible;
+}
+
+.spinner {
+  position: absolute;
+  width: 1em;
+  height: 1em;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: var(--engen-radius-full);
+  animation: engen-button-spin 0.6s linear infinite;
+}
+
+.loadingWithText .spinner {
+  position: static;
+}
+
+@keyframes engen-button-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+
+  .spinner {
+    animation-duration: 1.4s;
+  }
+}

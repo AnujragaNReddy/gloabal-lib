@@ -1,0 +1,7 @@
+/* Public stylesheet entry. Consumers import this once:
+ *   import '@engen/global-lib/styles.css';
+ *
+ * Component styles are authored as CSS Modules and bundled in automatically
+ * during `vite build`; only global design tokens live here.
+ */
+@import './tokens.css';

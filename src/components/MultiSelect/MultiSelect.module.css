@@ -1,0 +1,280 @@
+.root {
+  position: relative;
+  display: inline-block;
+  min-width: var(--engen-field-min-width);
+  font-family: var(--engen-font-family);
+}
+
+.sm {
+  min-width: 160px;
+}
+.md {
+  min-width: 240px;
+}
+.lg {
+  min-width: 320px;
+}
+.fullWidth {
+  display: block;
+  min-width: 0;
+}
+
+/* Trigger ------------------------------------------------------------------- */
+.trigger {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: var(--engen-space-2);
+  width: 100%;
+  height: var(--engen-field-height);
+  padding-inline: var(--engen-field-padding-inline);
+  border: var(--engen-field-border-width) solid var(--engen-field-border);
+  border-radius: var(--engen-field-radius);
+  background-color: var(--engen-field-bg);
+  color: var(--engen-field-fg);
+  font: inherit;
+  font-size: var(--engen-field-font-size);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background-color var(--engen-transition-fast),
+    border-color var(--engen-transition-fast),
+    color var(--engen-transition-fast),
+    box-shadow var(--engen-transition-fast);
+}
+
+.trigger:hover:not(:disabled) {
+  border-color: var(--engen-field-border-hover);
+}
+
+.trigger:focus-visible {
+  outline: 2px solid transparent;
+  border-color: var(--engen-field-border-focus);
+  box-shadow: 0 0 0 3px var(--engen-color-focus-ring);
+}
+
+.trigger[data-open] {
+  border-color: var(--engen-field-border-focus);
+}
+
+.trigger[data-filled] {
+  border-color: var(--engen-field-filled-border);
+  background-color: var(--engen-field-filled-bg);
+  color: var(--engen-field-filled-fg);
+}
+
+.trigger:disabled {
+  border-color: var(--engen-field-border);
+  background-color: var(--engen-field-disabled-bg);
+  color: var(--engen-field-disabled-fg);
+  cursor: not-allowed;
+}
+
+.triggerLabel {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.placeholder {
+  color: var(--engen-field-placeholder-fg);
+}
+
+.trigger[data-filled] .placeholder {
+  color: inherit;
+}
+
+.triggerSearchIcon {
+  flex: none;
+  font-size: 0.875rem;
+  opacity: 0.8;
+}
+
+.chevron {
+  flex: none;
+  font-size: 1rem;
+  transition: transform var(--engen-transition-fast);
+}
+
+.trigger[data-open] .chevron {
+  transform: rotate(180deg);
+}
+
+/* Panel ------------------------------------------------------------------- */
+.panel {
+  position: absolute;
+  inset-block-start: calc(100% + var(--engen-space-1));
+  inset-inline: 0;
+  z-index: var(--engen-z-dropdown);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--engen-popover-border);
+  border-radius: var(--engen-popover-radius);
+  background-color: var(--engen-popover-bg);
+  box-shadow: var(--engen-popover-shadow);
+  animation: engen-multiselect-in var(--engen-transition-fast);
+}
+
+.inlinePanel {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--engen-popover-border);
+  border-radius: var(--engen-popover-radius);
+  background-color: var(--engen-popover-bg);
+}
+
+@keyframes engen-multiselect-in {
+  from {
+    transform: translateY(-4px);
+    opacity: 0;
+  }
+}
+
+/* Search ----------------------------------------------------------------- */
+.search {
+  display: flex;
+  align-items: center;
+  gap: var(--engen-space-2);
+  padding: var(--engen-space-2) var(--engen-field-padding-inline);
+  border-bottom: 1px solid var(--engen-popover-border);
+  color: var(--engen-color-text-muted);
+}
+
+.searchIcon {
+  flex: none;
+  font-size: 0.875rem;
+}
+
+.searchInput {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: none;
+  color: var(--engen-color-text);
+  font: inherit;
+  font-size: var(--engen-field-font-size);
+}
+
+.searchInput:focus {
+  outline: none;
+}
+
+/* Select All ----------------------------------------------------------------- */
+.selectAll {
+  align-self: flex-start;
+  padding: var(--engen-space-2) var(--engen-field-padding-inline);
+  border: 0;
+  background: none;
+  color: var(--engen-link-fg);
+  font: inherit;
+  font-size: var(--engen-font-size-sm);
+  font-weight: var(--engen-font-weight-medium);
+  cursor: pointer;
+}
+
+.selectAll:hover {
+  text-decoration: underline;
+}
+
+.selectAll:focus-visible {
+  outline: 2px solid var(--engen-color-focus-ring);
+  outline-offset: -2px;
+}
+
+/* List ------------------------------------------------------------------- */
+.list {
+  overflow-y: auto;
+  max-height: var(--engen-popover-max-height);
+  padding: var(--engen-space-1);
+}
+
+.list:focus-visible {
+  outline: none;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: var(--engen-space-2);
+  padding: var(--engen-space-2);
+  border-radius: var(--engen-radius-sm);
+  color: var(--engen-option-fg);
+  font-size: var(--engen-field-font-size);
+  cursor: pointer;
+}
+
+.option[data-active] {
+  background-color: var(--engen-option-active-bg);
+  color: var(--engen-option-active-fg);
+}
+
+.option[aria-disabled='true'] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.box {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+  border: 1.5px solid var(--engen-color-border);
+  border-radius: 3px;
+  background-color: var(--engen-color-surface);
+  color: #fff;
+  font-size: 0.875rem;
+}
+
+.box[data-checked] {
+  border-color: var(--engen-control-accent);
+  background-color: var(--engen-control-accent);
+}
+
+.option[data-active] .box {
+  border-color: currentColor;
+}
+
+.option[data-active] .box[data-checked] {
+  background-color: #fff;
+  color: var(--engen-option-active-bg);
+}
+
+.optionLabel {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.optionMeta {
+  flex: none;
+  color: var(--engen-option-meta-fg);
+  font-size: var(--engen-font-size-sm);
+}
+
+.option[data-active] .optionMeta {
+  color: currentColor;
+}
+
+.empty {
+  padding: var(--engen-space-3);
+  color: var(--engen-color-text-muted);
+  font-size: var(--engen-field-font-size);
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel {
+    animation: none;
+  }
+
+  .trigger,
+  .chevron {
+    transition: none;
+  }
+}

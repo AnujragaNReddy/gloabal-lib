@@ -1,0 +1,117 @@
+.group {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--engen-space-2);
+  font-family: var(--engen-font-family);
+}
+
+.groupLabel {
+  color: var(--engen-color-text);
+  font-size: var(--engen-font-size-sm);
+  font-weight: var(--engen-font-weight-medium);
+}
+
+.options {
+  display: grid;
+  grid-template-columns: max-content;
+  gap: var(--engen-space-2) var(--engen-space-5);
+}
+
+.message {
+  margin: 0;
+  color: var(--engen-input-error-fg);
+  font-size: var(--engen-font-size-sm);
+}
+
+/* Radio ------------------------------------------------------------------- */
+.radio {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--engen-radio-gap);
+  color: var(--engen-radio-label-fg);
+  font-family: var(--engen-font-family);
+  font-size: var(--engen-input-font-size);
+  cursor: pointer;
+}
+
+.radio.disabled {
+  cursor: not-allowed;
+}
+
+.input {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 0;
+  width: var(--engen-radio-size);
+  height: var(--engen-radio-size);
+  margin: 0;
+  transform: translateY(-50%);
+  opacity: 0;
+  cursor: inherit;
+}
+
+.control {
+  box-sizing: border-box;
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: var(--engen-radio-size);
+  height: var(--engen-radio-size);
+  border: var(--engen-radio-border-width) solid var(--engen-radio-border);
+  border-radius: 50%;
+  transition:
+    border-color var(--engen-transition-fast),
+    box-shadow var(--engen-transition-fast);
+}
+
+.control::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: var(--engen-radio-checked);
+  transform: scale(0);
+  transition: transform var(--engen-transition-fast);
+}
+
+.input:checked ~ .control {
+  border-color: var(--engen-radio-checked);
+}
+
+.input:checked ~ .control::after {
+  transform: scale(var(--engen-radio-dot-scale));
+}
+
+.input:focus-visible ~ .control {
+  box-shadow: 0 0 0 3px var(--engen-color-focus-ring);
+}
+
+.input:checked ~ .label {
+  color: var(--engen-radio-label-checked-fg);
+}
+
+.input:disabled ~ .control {
+  border-color: var(--engen-radio-disabled-fg);
+}
+
+.input:disabled ~ .control::after {
+  background-color: var(--engen-radio-disabled-fg);
+}
+
+.input:disabled ~ .label {
+  color: var(--engen-radio-disabled-fg);
+}
+
+.label {
+  transition: color var(--engen-transition-fast);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .control,
+  .control::after,
+  .label {
+    transition: none;
+  }
+}

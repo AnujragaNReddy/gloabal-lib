@@ -1,0 +1,249 @@
+/**
+ * Design tokens.
+ *
+ * Wrapped in :where() so every declaration has zero specificity — apps can
+ * override any token with a plain `:root { --engen-... }` rule.
+ * Dark mode: set `data-theme="dark"` on <html> (or any ancestor).
+ */
+:where(:root) {
+  /* Brand (azure) --------------------------------------------------------- */
+  --engen-color-primary-50: #e6f6fc;
+  --engen-color-primary-100: #cceef9;
+  --engen-color-primary-500: #00a2e2; /* accent / hover */
+  --engen-color-primary-600: #0066b1; /* default action */
+  --engen-color-primary-700: #003963; /* pressed */
+
+  /* Surfaces & text ------------------------------------------------------- */
+  --engen-color-bg: #ffffff;
+  --engen-color-surface: #ffffff;
+  --engen-color-text: #18181b;
+  --engen-color-text-muted: #52525b;
+  --engen-color-border: #e4e4e7;
+  --engen-color-overlay: rgb(9 9 11 / 55%);
+
+  /* Feedback ------------------------------------------------------------- */
+  --engen-color-danger-500: #ef4444;
+  --engen-color-danger-600: #dc2626;
+  --engen-color-focus-ring: rgb(0 162 226 / 45%);
+
+  /* Typography -------------------------------------------------------------- */
+  --engen-font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif;
+  --engen-font-size-sm: 0.8125rem;
+  --engen-font-size-md: 0.875rem;
+  --engen-font-size-lg: 1rem;
+  --engen-font-weight-medium: 500;
+  --engen-font-weight-semibold: 600;
+  --engen-line-height: 1.5;
+
+  /* Spacing (4px base) --------------------------------------------------- */
+  --engen-space-1: 0.25rem;
+  --engen-space-2: 0.5rem;
+  --engen-space-3: 0.75rem;
+  --engen-space-4: 1rem;
+  --engen-space-5: 1.25rem;
+  --engen-space-6: 1.5rem;
+
+  /* Radius ------------------------------------------------------------------ */
+  --engen-radius-sm: 0.25rem;
+  --engen-radius-md: 0.5rem;
+  --engen-radius-lg: 0.75rem;
+  --engen-radius-full: 9999px;
+
+  /* Elevation ------------------------------------------------------------- */
+  --engen-shadow-sm: 0 1px 2px rgb(0 0 0 / 6%), 0 1px 3px rgb(0 0 0 / 10%);
+  --engen-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 10%), 0 2px 4px -2px rgb(0 0 0 / 10%);
+  --engen-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -4px rgb(0 0 0 / 10%);
+
+  /* Motion ------------------------------------------------------------------ */
+  --engen-transition-fast: 120ms cubic-bezier(0.4, 0, 0.2, 1);
+  --engen-transition-base: 180ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Layering ----------------------------------------------------------------- */
+  --engen-z-dropdown: 1000;
+  --engen-z-modal: 1100;
+  --engen-z-toast: 1200;
+
+  /* Button --------------------------------------------------------------- */
+  --engen-button-radius: 4px;
+  --engen-button-border-width: 1.5px;
+  --engen-button-font-size: 0.75rem;
+  --engen-button-font-weight: 700;
+  --engen-button-letter-spacing: 0.03em;
+  --engen-button-text-transform: uppercase;
+  --engen-button-height: 2.5rem;
+  --engen-button-padding-inline: var(--engen-space-4);
+  --engen-button-min-width-sm: 160px;
+  --engen-button-min-width-md: 240px;
+  --engen-button-min-width-lg: 320px;
+
+  /* Button · solid */
+  --engen-button-solid-bg: #0066b1; /* default */
+  --engen-button-solid-fg: #ffffff;
+  --engen-button-solid-bg-hover: #00a2e2; /* hover */
+  --engen-button-solid-bg-active: #003963; /* active */
+
+  /* Button · outlined */
+  --engen-button-outlined-fg: #0066b1;
+  --engen-button-outlined-border: #0066b1;
+  --engen-button-outlined-bg: transparent;
+  --engen-button-outlined-bg-hover: #00a2e2;
+  --engen-button-outlined-fg-hover: #ffffff;
+  --engen-button-outlined-bg-active: #003963;
+
+  /* Button · disabled (both variants) */
+  --engen-button-disabled-bg: #6d787f;
+  --engen-button-disabled-fg: #ffffff;
+  --engen-button-disabled-border: #6d787f;
+
+  /* Field — Select / MultiSelect trigger -------------------------------- */
+  --engen-field-height: 2.25rem;
+  --engen-field-radius: 4px;
+  --engen-field-border-width: 1px;
+  --engen-field-padding-inline: var(--engen-space-3);
+  --engen-field-min-width: 240px;
+  --engen-field-font-size: var(--engen-font-size-md);
+  --engen-field-bg: var(--engen-color-surface);
+  --engen-field-fg: var(--engen-color-text);
+  --engen-field-placeholder-fg: var(--engen-color-text-muted);
+  --engen-field-border: var(--engen-color-border);
+  --engen-field-border-hover: var(--engen-color-primary-500);
+  --engen-field-border-focus: var(--engen-color-primary-600);
+  /* "has value" state — solid blue, matching the design board */
+  --engen-field-filled-bg: #0066b1;
+  --engen-field-filled-fg: #ffffff;
+  --engen-field-filled-border: #0066b1;
+  --engen-field-disabled-bg: #f4f4f5;
+  --engen-field-disabled-fg: #9ca3af;
+
+  /* Popover panel ----------------------------------------------------------- */
+  --engen-popover-bg: var(--engen-color-surface);
+  --engen-popover-border: var(--engen-color-border);
+  --engen-popover-radius: 4px;
+  --engen-popover-shadow: var(--engen-shadow-lg);
+  --engen-popover-max-height: 15rem;
+
+  /* Option rows --------------------------------------------------------- */
+  --engen-option-fg: var(--engen-color-text);
+  --engen-option-meta-fg: var(--engen-color-text-muted);
+  --engen-option-active-bg: #0066b1; /* hover / keyboard highlight */
+  --engen-option-active-fg: #ffffff;
+  --engen-option-selected-fg: #0066b1; /* checkmark + selected label (single) */
+  --engen-control-accent: #0066b1; /* checkbox fill */
+  --engen-link-fg: #0066b1; /* "Select All" link */
+
+  /* Feedback palette (success / warning) --------------------------------- */
+  --engen-color-success-500: #16a34a;
+  --engen-color-success-600: #15803d;
+  --engen-color-success-bg: #ecfdf3;
+  --engen-color-warning-500: #f59e0b;
+  --engen-color-warning-600: #d97706;
+  --engen-color-warning-bg: #fff7ed;
+  --engen-color-danger-bg: #fef2f2;
+
+  /* Text inputs — Input / Textarea / NumberInput / DateInput ------------ */
+  --engen-input-height: 2.5rem;
+  --engen-input-radius: 4px;
+  --engen-input-border-width: 1px;
+  --engen-input-padding-inline: var(--engen-space-3);
+  --engen-input-padding-block: var(--engen-space-2);
+  --engen-input-font-size: var(--engen-font-size-md);
+  --engen-input-bg: var(--engen-color-surface);
+  --engen-input-fg: var(--engen-color-text);
+  --engen-input-placeholder-fg: #9ca3af;
+  --engen-input-border: #c7ccd1;
+  --engen-input-border-hover: var(--engen-color-primary-500);
+  --engen-input-border-focus: var(--engen-color-primary-600);
+  --engen-input-focus-fg: var(--engen-color-primary-600); /* blue text while focused */
+  --engen-input-focus-weight: 600;
+  --engen-input-disabled-bg: #d4d7db;
+  --engen-input-disabled-fg: #6b7280;
+  --engen-input-error-border: var(--engen-color-danger-500);
+  --engen-input-error-fg: var(--engen-color-danger-600);
+  --engen-input-adornment-fg: var(--engen-color-text-muted);
+  --engen-input-width-sm: 204px;
+  --engen-input-width-md: 280px;
+  --engen-input-width-lg: 336px;
+
+  /* Radio ------------------------------------------------------------------- */
+  --engen-radio-size: 1.125rem;
+  --engen-radio-border: #9ca3af;
+  --engen-radio-border-width: 2px;
+  --engen-radio-checked: var(--engen-color-primary-600);
+  --engen-radio-dot-scale: 0.5;
+  --engen-radio-gap: var(--engen-space-2);
+  --engen-radio-label-fg: var(--engen-color-text-muted);
+  --engen-radio-label-checked-fg: var(--engen-color-primary-600);
+  --engen-radio-disabled-fg: #c7ccd1;
+
+  /* Tag / chip --------------------------------------------------------------- */
+  --engen-tag-radius: 9999px;
+  --engen-tag-font-size: var(--engen-font-size-sm);
+  --engen-tag-padding-inline: var(--engen-space-3);
+  --engen-tag-height: 1.75rem;
+  --engen-tag-subtle-bg: #e4e7eb;
+  --engen-tag-subtle-fg: #3f4854;
+  --engen-tag-solid-bg: #0091da;
+  --engen-tag-solid-fg: #ffffff;
+
+  /* Toast / flash message -------------------------------------------------- */
+  --engen-toast-width: 22rem;
+  --engen-toast-radius: 6px;
+  --engen-toast-bg: #ffffff;
+  --engen-toast-fg: #18181b;
+  --engen-toast-shadow: var(--engen-shadow-lg);
+  --engen-toast-icon-size: 1.75rem;
+  --engen-toast-gap: var(--engen-space-3);
+  --engen-toast-success: var(--engen-color-success-500);
+  --engen-toast-error: var(--engen-color-danger-500);
+  --engen-toast-progress: var(--engen-color-warning-500);
+}
+
+:where([data-theme='dark']) {
+  --engen-color-bg: #09090b;
+  --engen-color-surface: #18181b;
+  --engen-color-text: #fafafa;
+  --engen-color-text-muted: #a1a1aa;
+  --engen-color-border: #27272a;
+  --engen-color-overlay: rgb(0 0 0 / 70%);
+  --engen-color-primary-50: #0a2436;
+  --engen-color-primary-100: #0d3350;
+  --engen-color-primary-500: #33b4e8;
+  --engen-color-primary-600: #00a2e2;
+  --engen-color-primary-700: #0066b1;
+
+  /* Buttons keep their brand hexes in dark mode; only the disabled tint softens. */
+  --engen-button-disabled-bg: #3a4147;
+  --engen-button-disabled-fg: #9aa4ac;
+  --engen-button-disabled-border: #3a4147;
+
+  --engen-field-disabled-bg: #1f2023;
+  --engen-field-disabled-fg: #6b7280;
+  --engen-link-fg: #33b4e8;
+  --engen-option-selected-fg: #33b4e8;
+
+  --engen-color-success-bg: #0f2a1c;
+  --engen-color-warning-bg: #2a1e0f;
+  --engen-color-danger-bg: #2a1416;
+
+  --engen-input-border: #3f464d;
+  --engen-input-placeholder-fg: #6b7280;
+  --engen-input-disabled-bg: #1f2023;
+  --engen-input-disabled-fg: #6b7280;
+
+  --engen-radio-border: #6b7280;
+  --engen-radio-disabled-fg: #3f464d;
+
+  --engen-tag-subtle-bg: #2b2f36;
+  --engen-tag-subtle-fg: #d4d7db;
+
+  --engen-toast-bg: #18181b;
+  --engen-toast-fg: #fafafa;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(:root) {
+    --engen-transition-fast: 0ms;
+    --engen-transition-base: 0ms;
+  }
+}
