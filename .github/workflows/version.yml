@@ -1,0 +1,43 @@
+name: Version Packages
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # No `publish` command is configured on purpose: this library is internal-only
+      # and is never `npm publish`ed. This step only ever opens/updates the
+      # "Version Packages" PR (version bump + CHANGELOG.md); merging that PR is
+      # what actually lands the release, and .github/workflows/tag-release.yml
+      # tags it afterwards.
+      - name: Create/update Version Packages PR
+        uses: changesets/action@v1
+        with:
+          title: 'chore: version packages'
+          commit: 'chore: version packages'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -12,14 +12,6 @@ const meta = {
       description: {
         component: [
           'Two variants — `solid` and `outlined` — each with default / hover / active / disabled states.',
-          '',
-          '**Component changelog**',
-          '',
-          '| Version | Change |',
-          '| --- | --- |',
-          '| `0.2.0` | Added `loadingText` (text beside the spinner while `isLoading`). |',
-          '| `0.2.0` | Redesigned to `solid` / `outlined` variants + `--engen-button-*` tokens. |',
-          '| `0.1.0` | Initial release. |',
         ].join('\n'),
       },
     },
@@ -44,7 +36,7 @@ export const Loading: Story = { args: { isLoading: true } };
 export const LoadingWithText: Story = {
   args: { isLoading: true, loadingText: 'Saving…', children: 'Save' },
   parameters: {
-    docs: { description: { story: '🆕 **Added in v0.2.0.** Pair `isLoading` with `loadingText`.' } },
+    docs: { description: { story: 'Pair `isLoading` with `loadingText`.' } },
   },
 };
 

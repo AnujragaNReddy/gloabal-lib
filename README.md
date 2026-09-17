@@ -22,14 +22,20 @@ Radio/RadioGroup, Tag, Toast and Modal.
 
 ## Install
 
+This is an **internal, org-only library** — it is never published to npm.
+Consuming projects install it directly from GitHub, pinned to a release tag:
+
 ```bash
-npm install @engen/global-lib
+npm install github:AnujragaNReddy/gloabal-lib#v1.0.0
 # peers (most apps already have these)
 npm install react react-dom
 ```
 
-> The versions in `package.json` are indicative. To pin the latest, run
-> `npx npm-check-updates -u && npm install`.
+Pick the tag from the repo's [Releases page](https://github.com/AnujragaNReddy/gloabal-lib/releases)
+or [`CHANGELOG.md`](./CHANGELOG.md) — each release lists exactly what changed,
+so you can choose a version deliberately instead of always tracking `main`.
+`npm install` builds the package automatically on install (via its `prepare`
+script), so no separate build step is needed in the consuming project.
 
 ## Usage
 
@@ -280,24 +286,27 @@ git init && git add -A && git commit -m "chore: scaffold component library"
   consumers and grouped **Added / Changed / Breaking / Fixed**.
 - **Policy:** [Semantic Versioning](https://semver.org/). New optional props,
   new variants and new components are **minor**; bug fixes are **patch**;
-  renames / removals / default changes are **major**. While the version is
-  `0.x`, a **minor may contain breaking changes** — always listed under a
-  **Breaking** heading with a one-line migration note.
+  renames / removals / default changes are **major** and are always listed
+  under a **Breaking** heading with a one-line migration note.
 - **Per-feature markers:** new props carry `@since x.y.z` in their JSDoc (shown
   in the Storybook props table); new stories note the version they landed in.
 
 ### Cutting a release
 
-```bash
-npm run changeset          # 1. after each user-facing change: pick bump + write a summary
-npm run version-packages    # 2. consumes .changeset/*.md → bumps version + appends to CHANGELOG.md
-#                             then tidy the appended section into the Added/Changed/Breaking
-#                             grouping and drop the commit-sha prefixes
-npm run release            # 3. build + `changeset publish` (+ push tags)
-```
+Versioning is automated by GitHub Actions ([.github/workflows/](.github/workflows/))
+— nothing is ever `npm publish`ed, this is git-tag distribution only:
 
-Multiple PRs merged between releases stack their `.changeset/*.md`; one
-`version-packages` folds them into a single dated section.
+1. After a user-facing change, run `npm run changeset` and describe it (pick
+   the bump + write a summary). Multiple PRs merged between releases stack
+   their `.changeset/*.md` files.
+2. On push to `main`, **Version Packages** (a `changesets/action` workflow)
+   opens/updates a PR that runs `changeset version` for you — bumping
+   `package.json` and appending a new dated section to `CHANGELOG.md` from all
+   pending changesets. Tidy that section into the Added/Changed/Breaking
+   grouping and drop the commit-sha prefixes, then merge it.
+3. Merging that PR triggers **Tag Release**, which tags the commit `v<version>`
+   and creates a GitHub Release with that section as its notes — this is the
+   tag consumers pin to in `npm install github:AnujragaNReddy/gloabal-lib#v<version>`.
 
 ## Build output
 

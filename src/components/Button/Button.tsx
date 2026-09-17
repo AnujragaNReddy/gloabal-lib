@@ -20,9 +20,6 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
    * Text shown next to the spinner while `isLoading` (e.g. "Saving…").
    * When omitted, only the spinner is shown and the label is hidden.
-   *
-   * **Added in v0.2.0.**
-   * @since 0.2.0
    */
   loadingText?: ReactNode;
   /** Stretch to the full width of the container (overrides `size`). */

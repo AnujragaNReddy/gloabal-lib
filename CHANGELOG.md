@@ -3,9 +3,8 @@
 All notable changes to **`@engen/global-lib`** are recorded here for consumers.
 
 - Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
-- Versioning: [Semantic Versioning](https://semver.org/). **While the version is
-  `0.x`, a minor bump may include breaking changes** — those are always listed
-  under a **Breaking** heading with a one-line migration note.
+- Versioning: [Semantic Versioning](https://semver.org/). Breaking changes are
+  always listed under a **Breaking** heading with a one-line migration note.
 - This file is the source for the Storybook **Docs → Changelog** page.
 
 ## [Unreleased]
@@ -15,7 +14,7 @@ _Nothing yet. Run `npm run changeset` after a user-facing change to add an entry
 
 ---
 
-## [0.2.0] — 2026-09-10
+## [1.0.0] — 2026-09-10
 
 First public release. Installing `@engen/global-lib` gives you everything below.
 

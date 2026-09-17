@@ -1,0 +1,29 @@
+name: Changeset Check
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  changeset-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Not a required status check, so it doesn't block merging — it's a visible
+      # reminder if a user-facing change is missing a changeset.
+      - name: Check for a changeset
+        run: npx changeset status --since=origin/${{ github.event.pull_request.base.ref }}

@@ -1,9 +1,10 @@
 {
   "name": "@engen/global-lib",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "Engen's reusable React component library — buttons, dropdowns, modals and more.",
   "license": "MIT",
   "author": "Engen",
+  "private": true,
   "type": "module",
   "sideEffects": [
     "**/*.css"
@@ -44,8 +45,7 @@
     "validate": "npm run typecheck && npm run lint && npm run test && npm run build",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "npm run build && changeset publish",
-    "prepublishOnly": "npm run build"
+    "prepare": "npm run build"
   },
   "peerDependencies": {
     "react": "^18.2.0 || ^19.0.0",
@@ -95,8 +95,5 @@
     "design-system",
     "ui",
     "components"
-  ],
-  "publishConfig": {
-    "access": "public"
-  }
+  ]
 }
